@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weekly History – Smart Food Analyzer</title>
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+
+  <!-- CHART.JS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    body {
+        background: linear-gradient(135deg, #e9f7ef, #d0ecd8);
+        font-family: "Inter", sans-serif;
+    }
+
+    .history-wrapper {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 20px;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .section-card {
+        background: rgba(255,255,255,0.7);
+        padding: 25px;
+        border-radius: 18px;
+        margin-bottom: 25px;
+        box-shadow: 0 8px 22px rgba(0,0,0,0.15);
+        backdrop-filter: blur(10px);
+    }
+
+    .title-large {
+        font-family: "Poppins", sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+        color: #1b5e20;
+        text-align: center;
+        margin-bottom: 22px;
+    }
+
+    .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        margin-bottom: 30px;
+    }
+
+    .stat-box {
+        background: rgba(255,255,255,0.85);
+        padding: 20px;
+        border-radius: 14px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        transition: 0.3s ease;
+    }
+    .stat-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+    }
+    .stat-value {
+        font-size: 32px;
+        font-weight: 700;
+        color: #1b5e20;
+    }
+    .stat-label {
+        font-size: 16px;
+        color: #4f6e52;
+    }
+
+    /* Milestones */
+    .milestone-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #1b5e20;
+        margin-bottom: 10px;
+    }
+    .milestone-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 10px;
+    }
+    .milestone-list li {
+        background: rgba(255,255,255,0.8);
+        padding: 12px;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    }
+    .milestone-list li span {
+        font-size: 20px;
+    }
+
+    /* AI Box */
+    .ai-box {
+        padding: 20px;
+        background: rgba(255,255,255,0.8);
+        margin-top: 20px;
+        border-radius: 16px;
+        box-shadow: 0 8px 22px rgba(0,0,0,0.15);
+    }
+    .ai-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #1b5e20;
+        margin-bottom: 10px;
+    }
+    .ai-text {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #2d4d33;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(25px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sideMenu">
+      <button class="close-btn" onclick="closeMenu()">✕ Close</button>
+
+      <a href="home.html">🏠 Home</a>
+    <a href="index1.html">🥗 Analyzer</a>
+    <a href="dashboard.html">📊 Dashboard</a>
+    <a href="fitness.html">🏃Fitness</a>
+    <a href="history.html">🧾 History</a>
+    <a href="profile.html">👤 Profile</a>
+    <a href="settings.html">⚙ Settings</a>
+    <a href="ai-assistant.html" class="active">🤖 AI Assistant</a>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header-card">
+      <button class="menu-btn" onclick="openMenu()">☰</button>
+      <div class="brand">Smart Food Analyzer</div>
+  </div>
+
+  <!-- MAIN HISTORY CONTENT -->
+  <div class="history-wrapper">
+
+      <h1 class="title-large">Your Weekly Nutrition Overview</h1>
+
+      <!-- Stat Cards -->
+      <div class="stat-grid">
+          <div class="stat-box">
+              <div class="stat-value">13,700 kcal</div>
+              <div class="stat-label">Total Calories This Week</div>
+          </div>
+          <div class="stat-box">
+              <div class="stat-value">710g</div>
+              <div class="stat-label">Protein Consumed</div>
+          </div>
+          <div class="stat-box">
+              <div class="stat-value">460g</div>
+              <div class="stat-label">Fat Intake</div>
+          </div>
+          <div class="stat-box">
+              <div class="stat-value">82%</div>
+              <div class="stat-label">Healthy Eating Score</div>
+          </div>
+      </div>
+
+      <!-- Line Chart -->
+      <div class="section-card">
+          <h3 class="milestone-title">📈 Weekly Nutrition Trend</h3>
+          <canvas id="weeklyChart"></canvas>
+      </div>
+
+      <!-- Macros Pie Chart -->
+      <div class="section-card">
+          <h3 class="milestone-title">🥗 Weekly Macro Breakdown</h3>
+          <canvas id="macroChart"></canvas>
+      </div>
+
+      <!-- Milestones -->
+      <div class="section-card">
+          <h3 class="milestone-title">🏆 Achievements This Week</h3>
+          <ul class="milestone-list">
+              <li><span>🔥</span> Logged meals 7 days in a row</li>
+              <li><span>💪</span> Hit protein goal 4 out of 7 days</li>
+              <li><span>🥗</span> Lowest processed food intake this month</li>
+              <li><span>🚰</span> Met hydration goal 6 days in a row</li>
+          </ul>
+      </div>
+
+      <!-- AI Weekly Summary -->
+      <div class="ai-box">
+          <div class="ai-title">🤖 AI Weekly Summary</div>
+          <p class="ai-text">
+              Your nutrient balance this week shows excellent consistency, with
+              stable calorie intake and strong protein hits on training days.  
+              Fat levels were slightly above your target on Thursday and Saturday.  
+              Increasing fiber and reducing processed sugars next week will help
+              improve your health score even further.
+          </p>
+      </div>
+
+  </div>
+
+  <script>
+      function openMenu() {
+          document.getElementById('sideMenu').classList.add('active');
+      }
+      function closeMenu() {
+          document.getElementById('sideMenu').classList.remove('active');
+      }
+
+      /* ===== WEEKLY DATA ===== */
+      const labels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+      const calories = [1800, 1950, 2200, 2000, 1850, 2100, 1900];
+      const protein = [90, 102, 110, 100, 95, 105, 98];
+      const fats = [60, 58, 70, 65, 62, 72, 68];
+
+      /* ===== WEEKLY CHART ===== */
+      new Chart(document.getElementById("weeklyChart"), {
+          type: "line",
+          data: {
+              labels,
+              datasets: [
+                  { label: "Calories", data: calories, borderColor: "#1b5e20", borderWidth: 3, tension: 0.3 },
+                  { label: "Protein (g)", data: protein, borderColor: "#2e7d32", borderWidth: 3, tension: 0.3 },
+                  { label: "Fat (g)", data: fats, borderColor: "#66bb6a", borderWidth: 3, tension: 0.3 }
+              ]
+          },
+          options: { responsive: true }
+      });
+
+      /* ===== MACRO PIE CHART ===== */
+      new Chart(document.getElementById("macroChart"), {
+          type: "pie",
+          data: {
+              labels: ["Protein", "Fat", "Carbs"],
+              datasets: [{
+                  data: [710, 460, 1080],
+                  backgroundColor: ["#1b5e20", "#66bb6a", "#a5d6a7"]
+              }]
+          },
+      });
+  </script>
+<script>
+    // Load theme on page load
+    document.addEventListener("DOMContentLoaded", () => {
+        const savedTheme = localStorage.getItem("theme");
+
+        if (savedTheme === "dark") {
+            document.body.classList.add("dark-mode");
+        }
+    });
+</script>
+</body>
+</html>

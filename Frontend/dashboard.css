@@ -1,0 +1,301 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #e9f7ef, #d0ecd8);
+    font-family: "Inter", sans-serif;
+}
+
+/* SIDEBAR */
+.sidebar {
+    position: fixed;
+    left: -260px;
+    top: 0;
+    width: 260px;
+    height: 100%;
+    background: #1b5e20;
+    color: white;
+    padding-top: 60px;
+    transition: 0.4s;
+    z-index: 999;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar a {
+    display: block;
+    padding: 16px 25px;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.sidebar a:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 22px;
+}
+
+/* HEADER */
+.header-card {
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(10px);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+}
+
+.menu-btn {
+    font-size: 26px;
+    background: none;
+    border: none;
+    margin-right: 20px;
+}
+
+.brand {
+    font-size: 26px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    color: #1b5e20;
+}
+
+/* MAIN CONTAINER */
+.dashboard-container {
+    padding: 20px;
+}
+
+/* TOP METRICS */
+.metrics-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.metric-card {
+    background: rgba(255,255,255,0.55);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+}
+
+.metric-value {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 8px 0;
+    color: #1b5e20;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #d8eadb;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+
+.progress-fill {
+    height: 8px;
+    width: 60%;
+    background: #2e7d32;
+    border-radius: 6px;
+}
+
+.progress-fill.protein { background: #1565c0; }
+.progress-fill.carbs { background: #ef6c00; }
+.progress-fill.fats { background: #ad1457; }
+
+/* GRID */
+.grid-two {
+    margin-top: 30px;
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+/* CHART CARD */
+.chart-card, .insight-card, .meal-card, .hydration-card {
+    background: rgba(255,255,255,0.55);
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+}
+
+.chart-img {
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+/* INSIGHTS */
+.insight-item {
+    background: rgba(255,255,255,0.8);
+    padding: 10px 14px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* MEAL LOG */
+.meal-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 10px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 12px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* HYDRATION */
+.water-count {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1565c0;
+}
+
+.water-bar {
+    width: 60px;
+    height: 180px;
+    background: #e3f2fd;
+    border-radius: 12px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.water-fill {
+    background: #2196f3;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+.chat-float-btn {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 60px;
+    height: 60px;
+    background: #2e7d32;
+    color: white;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 999;
+}
+
+.chat-float-btn:hover {
+    transform: scale(1.1);
+}
+
+/* ========= CHAT PANEL (SLIDING) ========= */
+
+.chat-panel {
+    position: fixed;
+    right: -360px;
+    bottom: 0;
+    width: 360px;
+    height: 100%;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(12px);
+    box-shadow: -6px 0 20px rgba(0,0,0,0.2);
+    border-left: 2px solid rgba(255,255,255,0.6);
+    transition: 0.4s;
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+    border-radius: 16px 0 0 16px;
+}
+
+.chat-panel.active {
+    right: 0;
+}
+
+.chat-header {
+    padding: 18px;
+    font-size: 20px;
+    font-weight: 700;
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat-close {
+    border: none;
+    background: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.chat-body {
+    padding: 15px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* ====== Chat Messages ====== */
+.chat-msg {
+    background: white;
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    font-size: 15px;
+    max-width: 85%;
+}
+
+.chat-ai {
+    background: #dcedc8;
+    align-self: flex-start;
+}
+
+.chat-user {
+    background: #c8e6c9;
+    align-self: flex-end;
+}
+
+/* ====== Input area ====== */
+.chat-input-area {
+    display: flex;
+    padding: 12px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    background: rgba(255,255,255,0.6);
+}
+
+#chatInput {
+    flex: 1;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    background: white;
+    font-size: 15px;
+}
+
+.chat-send {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    margin-left: 10px;
+    width: 50px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 18px;
+}

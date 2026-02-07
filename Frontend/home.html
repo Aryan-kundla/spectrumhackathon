@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Food Analyzer – Home</title>
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ---- HOME PAGE BEAUTIFICATION ---- */
+
+    body {
+        background: linear-gradient(135deg, #e9f7ef, #d0ecd8);
+        font-family: "Inter", sans-serif;
+    }
+
+    .hero-section {
+        text-align: center;
+        padding: 60px 20px 30px;
+        max-width: 900px;
+        margin: 0 auto;
+        animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-title {
+        font-size: 48px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        color: #247a3b;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    }
+
+    .hero-subtitle {
+        font-size: 20px;
+        color: #3c5c42;
+        max-width: 680px;
+        margin: 0 auto;
+        line-height: 1.5;
+    }
+
+    /* ---- FEATURE BOXES (non-rotating) ---- */
+    .feature-row {
+        margin-top: 40px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+        padding: 10px;
+    }
+
+    .feature-card {
+        background: rgba(255, 255, 255, 0.55);
+        padding: 28px;
+        border-radius: 16px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.6);
+        box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+        transition: 0.3s ease;
+        animation: fadeInUp 0.8s ease-in-out;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .feature-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+        background: rgba(255,255,255,0.75);
+    }
+
+    .feature-icon {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+    .feature-title {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #1b5e20;
+    }
+
+    .feature-text {
+        font-size: 15px;
+        color: #3c5c42;
+    }
+
+    /* CTA BUTTON */
+    .home-cta-bottom {
+        margin-top: 60px;
+        max-width: 260px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 18px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar" id="sideMenu">
+      <button class="close-btn" onclick="closeMenu()">✕ Close</button>
+
+      <a href="home.html">🏠 Home</a>
+    <a href="index1.html">🥗 Analyzer</a>
+    <a href="dashboard.html">📊 Dashboard</a>
+    <a href="fitness.html">🏃Fitness</a>
+    <a href="history.html">🧾 History</a>
+    <a href="profile.html">👤 Profile</a>
+    <a href="settings.html">⚙ Settings</a>
+    <a href="ai-assistant.html" class="active">🤖 AI Assistant</a>
+  </div>
+
+  <!-- HEADER CARD -->
+  <div class="header-card">
+      <button class="menu-btn" onclick="openMenu()">☰</button>
+      <div class="brand">Smart Food Analyzer</div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main-container">
+      <div class="main-card">
+
+          <!-- HERO -->
+          <section class="hero-section">
+              <h1 class="hero-title">Eat Smart. Live Better.</h1>
+              <p class="hero-subtitle">
+                  Track your meals effortlessly using AI-powered nutrition analysis.  
+                  Scan dishes, view detailed macro reports, and make healthier choices—instantly.
+              </p>
+          </section>
+
+          <!-- FEATURE CARDS -->
+          <section class="feature-row">
+
+              <div class="feature-card">
+                  <div class="feature-icon">🤖</div>
+                  <h3 class="feature-title">AI Food Detection</h3>
+                  <p class="feature-text">Automatically identifies foods with high accuracy.</p>
+              </div>
+
+              <div class="feature-card">
+                  <div class="feature-icon">📊</div>
+                  <h3 class="feature-title">Nutritional Insights</h3>
+                  <p class="feature-text">Calories, macros, vitamins & more, all in one place.</p>
+              </div>
+
+              <div class="feature-card">
+                  <div class="feature-icon">💪</div>
+                  <h3 class="feature-title">Fitness Integrated</h3>
+                  <p class="feature-text">Diet + fitness planning for real-world results.</p>
+              </div>
+
+          </section>
+
+          <!-- CTA BUTTON -->
+          <button onclick="goToAnalyzer()" class="btn-primary home-cta-bottom">
+              🚀 Start Analyzing
+          </button>
+
+      </div>
+  </div>
+
+  <script>
+      function openMenu() {
+          document.getElementById('sideMenu').classList.add('active');
+      }
+      function closeMenu() {
+          document.getElementById('sideMenu').classList.remove('active');
+      }
+      function goToAnalyzer() {
+          window.location.href = "index1.html";
+      }
+  </script>
+<script>
+    // Load theme on page load
+    document.addEventListener("DOMContentLoaded", () => {
+        const savedTheme = localStorage.getItem("theme");
+
+        if (savedTheme === "dark") {
+            document.body.classList.add("dark-mode");
+        }
+    });
+</script>
+</body>
+</html>

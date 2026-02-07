@@ -1,0 +1,285 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background: #eef6f0;
+  color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* ==================== HEADER (CARD FORMAT) ==================== */
+.header-card {
+  width: 100%;
+  max-width: 1100px;
+  background: white;
+  padding: 24px 32px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+/* Brand */
+.brand {
+  font-size: 36px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+}
+
+/* ==================== LEFT SLIDE MENU ==================== */
+
+/* Menu Button */
+.menu-btn {
+  background: #2e7d32;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.menu-btn:hover {
+  background: #256628;
+}
+
+/* Sidebar Panel */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -260px; /* Hidden by default */
+  width: 260px;
+  height: 100%;
+  background: white;
+  box-shadow: 4px 0 15px rgba(0,0,0,0.15);
+  padding: 30px 20px;
+  border-radius: 0 20px 20px 0;
+  transition: 0.35s ease-in-out;
+  z-index: 9999;
+}
+
+/* Show sidebar */
+.sidebar.active {
+  left: 0;
+}
+
+/* Sidebar links */
+.sidebar a {
+  display: block;
+  padding: 16px 10px;
+  text-decoration: none;
+  color: #2e7d32;
+  font-size: 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.sidebar a:hover {
+  background: #e8f5e9;
+}
+
+/* Close Button */
+.close-btn {
+  background: #c62828;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.close-btn:hover {
+  background: #a32121;
+}
+
+/* ==================== MAIN LAYOUT ==================== */
+.main-container {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: center;
+}
+
+.main-card {
+  background: white;
+  width: 100%;
+  max-width: 1100px;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* ==================== HORIZONTAL LAYOUT ==================== */
+.horizontal-layout {
+  display: flex;
+  gap: 30px;
+}
+
+.left-panel,
+.right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ==================== TITLES ==================== */
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2e7d32;
+  text-align: center;
+  margin-bottom: 6px;
+  font-family: "Poppins", sans-serif;
+}
+
+.subtitle {
+  font-size: 18px;
+  text-align: center;
+  color: #4d6b4f;
+  margin-bottom: 26px;
+}
+
+/* ==================== IMAGE / ANIMATION ==================== */
+.image-box {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.noodle-animation {
+  width: 160px;
+  animation: float 3s ease-in-out infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* ==================== BOXES ==================== */
+.box {
+  background: #f7faf8;
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  border: 1px solid #d6e6d8;
+}
+
+.label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2e7d32;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Upload Input */
+.input-file {
+  width: 100%;
+  padding: 14px;
+  font-size: 17px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #b6d3b8;
+}
+
+.input-file:hover {
+  border-color: #8ab893;
+}
+
+/* ==================== PREVIEW FRAME ==================== */
+.preview-frame {
+  width: 100%;
+  height: 320px;
+  background: white;
+  border: 1px solid #b6d3b8;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+#preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+/* ==================== BUTTONS ==================== */
+.btn-primary {
+  width: 100%;
+  background: #66bb6a;
+  padding: 16px;
+  border-radius: 12px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-primary:hover {
+  background: #579e5c;
+}
+
+.btn-secondary {
+  width: 100%;
+  background: #2e7d32;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: #256628;
+}
+
+/* ==================== RESULT ==================== */
+.result-text {
+  font-size: 18px;
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.daily-text {
+  font-size: 20px;
+  color: #1a1a1a;
+  font-weight: 700;
+}
+.dark-mode {
+    background-color: #111 !important;
+    color: #fff !important;
+}
+
+.dark-mode .main-card,
+.dark-mode .header-card,
+.dark-mode .sidebar {
+    background: #1c1c1c !important;
+    color: #fff !important;
+}
+
+.dark-mode a {
+    color: #fff !important;
+}
