@@ -12,7 +12,7 @@ import openai
 # CONFIG
 # ===============================
 
-openai.api_key = "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"
+openai.api_key = ""
 app = FastAPI()
 
 # ✅ CORS
@@ -203,3 +203,4 @@ def ask_gpt(data: ChatRequest):
         return {"reply": response.choices[0].message.content}
     except Exception as e:
         return {"error": str(e)}
+
